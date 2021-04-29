@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>
+        RegExp
+    </title>
+
+    <script type="text/javascript">
+        var text = "String 123 for regular expr567ession 'Search numbers' 546";
+        document.write("Original string: " + text + "<br/>");
+        var pattern = /\d\d\d/g;
+        var firstIndex = text.search(pattern);
+        document.write("Numbers starts from index " + firstIndex + "<br/>");
+
+        var replaceResult = text.replace(pattern, " *changed from numbers* ");
+        document.write(replaceResult  + "<br/>");
+       // var patternRegExp = new RegExp("\d\d\d");
+       var resGetNumbers = text.match(/\d/g);
+       document.write(resGetNumbers + "<br/>");
+
+       var resSplit = text.split(pattern);
+       document.write(resSplit + "<br/>");
+
+       document.write("----------------------------------------------------------------- </br>" );
+
+       var pattern = /\d{1,2}-\d{1,2}-\d{4}/;
+       var text = "2-12-1999";
+       document.write(text + " -> " + pattern.test(text) + "<br />");
+
+       pattern = /^\+375 \((17|29|33|44)\) [0-9]{3}-[0-9]{2}-[0-9]{2}$/;
+       text = "+375 (44) 718-45-11";
+       document.write(text + " -> " + pattern.test(text) + "<br/>");
+
+       pattern = /\b[a-z0-9._]+@[a-z0-9.-]+\.?[a-z]{2,4}\b/i;
+       text = "ypershay.test@elinext.nicecom";
+       document.write(text + " -> " + pattern.test(text) + "<br/>");
+
+       // Metacharacters.
+        // \w Any upper and lower case alphanumeric character and underscore character (same as [a-zA-Z0-9_]).
+        // \W Any non-underscore and non-alphanumeric character
+        // \s any whitespace character (same as [\ r \ n \ f \ v \ t])
+        // \S Any non-whitespace character (same as [^ \ r \ n \ f \ v \ t])
+        // \d any digit
+        // \D any non-numeric character (same as [^ 0-9])
+
+        // \v (vertical tab)
+        // \t (tab)
+        // \r (carriage return)
+        // \n (line feed)
+        // \f (page translation)
+        
+        // Character sets
+        // [RrGgBb] - Match the specified characters
+        // [a-z] Match lowercase English characters
+        // [0-9] Match the specified digits
+        // [^ 0-9] Match anything other than digits in the specified range
+        
+        // Quantifier (Quantifiers)
+        // + One or more characters
+        // * zero or more characters
+        //? zero or one occurrence
+        
+        // Intervals
+        // {3} exact number of matches
+        // {2,3} range
+        // {3,} at least
+        // {, 3} no more
+        
+        // Anchor characters
+        // ^ Beginning of line
+        // $ End of line
+        // \b matches word boundary
+        
+        // Flags
+        // i perform a case insensitive search.
+        // g do a global search.
+        // m multiline mode.
+
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            Set interval and clear
+        </title>
+
+        <script type="text/javascript">
+        window.onload = function(){
+            var counter = 0;
+            var intervalHandler;
+
+            var get = function(id){
+                return document.getElementById(id);
+            }
+
+            function count(){
+                get("output").innerHTML = counter;
+                counter++;
+            }
+
+            get("startButton").onclick = function(){
+                intervalHandler = setInterval(count, 10);
+            }
+
+            get("stopButton").onclick = function(){
+                clearInterval(intervalHandler);
+            }
+        }
+        </script>
+    </head>
+
+    <body>
+        <p id="output">-</p>
+        <input type="button" value="Start" id="startButton"/>
+        <input type="button" value="Stop" id="stopButton"/>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+body{
+    height: 2000px;
+}
+
+div{
+    border: solid red 1px;
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+}
+
+#divAbs{
+    position: absolute;
+    top: 30px;
+    left: 300px;
+}
+
+#divFix{
+    position:fixed;
+    top: 140px;
+    right: 320px;
+}
+
+#divRel{
+    position: relative;
+    top: 20px;
+    left: 40px;
+    border: dashed 2px blue;
+    height: 20px;
+    width: 120px;
+}

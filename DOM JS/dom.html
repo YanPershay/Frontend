@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Work with DOM's nodes.</title>
+    <script type="text/javascript">
+    
+        function selectFirst(){
+            var list = document.getElementById("list");
+
+            var child = list.firstChild;
+
+            if(child != null){
+                child.style.color = "red";
+                child.style.fontWeight = "bold";
+            }
+        }
+
+        function selectLast(){
+            var list = document.getElementById("list");
+
+            var child = list.lastChild;
+
+            if(child != null){
+                child.style.color = "red";
+                child.style.fontWeight = "bold";
+            }
+        }
+
+        function resetColor(){
+            var lilist = document.getElementsByTagName("li");
+
+            for(var i = 0; i < lilist.length; i++){
+                lilist[i].style.color = "black";
+                lilist[i].style.fontWeight = null;
+            }
+        }
+
+        var node = null;
+        function selectNextNode(){
+            resetColor();
+            if(node == null){
+                var list = document.getElementById("list");
+                node = list.firstChild;
+                node.style.color = "green";
+                node.style.fontWeight = "bold";
+                return;
+            }
+
+            node = node.nextSibling;
+            if(node != null){
+                node.style.color = "green";
+                node.style.fontWeight = "bold";
+            }
+        }
+
+        function selectPrevNode(){
+            resetColor();
+            if(node == null){
+                var list = document.getElementById("list");
+                node = list.lastChild;
+                node.style.color = "green";
+                node.style.fontWeight = "bold";
+                return;
+            }
+
+            node = node.previousSibling;
+            if(node != null){
+                node.style.color = "green";
+                node.style.fontWeight = "bold";
+            }
+        }
+
+        function createNewChild(){
+            var list = document.getElementById("list");
+            var child = document.createElement("li");
+            child.innerHTML = "NEW CHILD";
+            list.appendChild(child);
+        }
+
+        function removeLastChild(){
+            var list = document.getElementById("list");
+            var lastChild = list.lastChild;
+
+            if(lastChild != null){
+                list.removeChild(lastChild);
+            }
+            else{
+                alert("Your list has no elements!");
+            }
+        }
+        
+        function addChildToStart(){
+            var list = document.getElementById("list");
+            var child = document.createElement("li");
+            child.innerHTML = "NEW CHILD";
+            list.insertBefore(child, list.firstChild);
+        }
+        
+
+    </script>
+</head>
+
+<body>
+    <ul id="list"><li>First</li><li>Second</li><li>Third</li><li>Fourth</li><li>Fifth</li></ul>
+    <br/>
+    <input type="button" value="Select first element" onclick="selectFirst()"/><br/>
+    <input type="button" value="Select last element" onclick="selectLast()"/><br/>
+    <input type="button" value="Reset colors" onclick="resetColor()"/><br/>
+    <input type="button" value="Select next element" onclick="selectNextNode()"/><br/>
+    <input type="button" value="Select previous element" onclick="selectPrevNode()"/><br/>
+    <input type="button" value="Add element to end" onclick="createNewChild()"/><br/>
+    <input type="button" value="Remove last element" onclick="removeLastChild()"/><br/>
+    <input type="button" value="Add element to start" onclick="addChildToStart()"/><br/>
+</body>
+
+</html>
