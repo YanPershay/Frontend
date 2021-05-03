@@ -1,0 +1,11 @@
+.tooltip{
+    box-shadow: 2px 2px 2px black;
+    background-color: aquamarine;
+    border: solid black 1px;
+    padding: 5px;
+    font: bold 10pt sans-serif;
+}
+
+#text{
+    width: 200px;
+}

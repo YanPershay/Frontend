@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XMLHttpRequest</title>
+    <script type="text/javascript">
+
+      window.onload = function(){
+       
+        document.getElementById("btnGet").onclick = function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://172.17.0.157:8081/test.html", false);
+            xhr.send();
+            document.getElementById("output").innerHTML += xhr.responseText;
+        }
+
+      }
+
+    </script>
+</head>
+
+<body>
+    <input id="btnGet" type="button" value="GETTT"/>
+    <p id="output"></p>
+</body>
+
+</html>

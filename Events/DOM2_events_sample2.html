@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+    <style type="text/css">
+        #wrapper p{
+            height: 150px;
+            width: 150px;
+            background-color: green;
+            float: left;
+            margin: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+    
+        window.addEventListener("load", function(){
+            var wrapper = document.getElementById("wrapper");
+
+            wrapper.addEventListener("click", function(e){
+                e.target.style.backgroundColor = "purple";
+            })
+           
+
+        })
+        
+
+    </script>
+</head>
+
+<body>
+   
+    <div id="wrapper">
+       <p></p>
+       <p></p>
+       <p></p>
+       <p></p>
+       <p></p>
+       <p></p>
+       <p></p>
+       <p></p>
+       <p></p>
+       <p></p>
+       
+       <div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+       
+       </div>
+    </div>
+
+</body>
+
+</html>

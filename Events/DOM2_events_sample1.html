@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+    <script type="text/javascript">
+    
+        window.addEventListener("load", function(){
+
+            var guard = document.getElementById("guard");
+            guard.addEventListener("keypress", function(e){
+
+                if(String.fromCharCode(e.charCode) != '0' && String.fromCharCode(e.charCode) != '1'){
+                    e.preventDefault();
+                }
+            })
+
+        })
+        
+
+    </script>
+</head>
+
+<body>
+   
+    <div id="guard">
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+    </div>
+
+</body>
+
+</html>

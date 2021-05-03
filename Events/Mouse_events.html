@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mouse Events</title>
+    <style type="text/css">
+        #onmouse {
+            width: 100px;
+            height: 100px;
+            background-color: indigo;
+        }
+
+        div{
+            width: 400px;
+            height: 100px;
+            background-color: yellowgreen;
+            margin-bottom: 10px;
+            padding: auto;
+        }
+    </style>
+    <script type="text/javascript">
+
+        window.addEventListener("load", function () {
+            var p = document.getElementById("onmouse");
+
+            p.onmouseover = function () {
+                this.style.backgroundColor = "green";
+            }
+
+            p.addEventListener("mouseout", function (e) {
+                e.target.style.backgroundColor = "red";
+            })
+            
+            var div1 = document.getElementById("div1");
+            var div2 = document.getElementById("div2");
+            var div3 = document.getElementById("div3");
+
+            div1.onmousedown = function(e) {
+                if(!e) e = window.event;
+
+                this.innerHTML = "Event onmouse<b>downn</b> X:" + e.offsetX + " Y:" + e.offsetY;
+            }
+
+            div2.onmousemove = function(e){
+                this.innerHTML = "Event onmouse<b>move</b> X:" + e.offsetX + " Y:" + e.offsetY;
+            }
+            
+            div3.onmouseup = function(e){
+                this.innerHTML = "Event onmouse<b>up</b> X:" + e.offsetX + " Y:" + e.offsetY;
+            }
+        })
+
+    </script>
+</head>
+
+<body>
+    <p>On mouse over / on mouse out</p>
+    <p id="onmouse"></p>
+    <br />
+
+    <div id="div1">
+
+    </div>
+    <div id="div2">
+
+    </div>
+    <div id="div3">
+
+    </div>
+
+</body>
+
+</html>

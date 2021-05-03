@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cookie example</title>
+
+    <script type="text/javascript">
+
+      window.onload = function(){
+          function $(id){
+              return document.getElementById(id);
+          }
+
+          
+          document.cookie = "hello=world;expires=Tue, 04 May 2021 12:00:00 UTC"
+
+
+          var f = document.forms[0];
+
+          $("saveBtn").onclick = function(){
+              var cookieStr = "";
+              cookieStr += f.cookieName.value + "=" + f.cookieValue.value + ";";
+              cookieStr += "max-age=" + f.cookieTime.value + ";";
+              document.cookie = cookieStr; 
+          }
+
+          $("readAll").onclick = function(){
+              alert(document.cookie);
+          }
+
+          $("readSpec").onclick = function(){
+              alert(findCookieValue(f.nameToread.value));
+          }
+
+          function findCookieValue(cookieName){
+              var allCookies = document.cookie;
+              var pos = allCookies.indexOf(cookieName + "=");
+
+              if(pos != -1){
+
+                var start = pos + cookieName.length + 1;
+                var end = allCookies.indexOf(";", start);
+
+                if(end == -1){
+                    end = allCookies.length;
+                    var value = allCookies.substring(start, end);
+                    value = decodeURIComponent(value);
+                    return value;
+                }
+
+              }
+          }
+      }
+
+    </script>
+</head>
+
+<body>
+    <form>
+       Name <input type="text" name="cookieName" value="" /><br />
+       Value <input type="text" name="cookieValue" value="" /><br />
+       Lifetime <input type="text" name="cookieTime" value="" /><br />
+       <input id="saveBtn" type="button" value="Save"/>
+
+       <br/>
+       <br/>
+       <br/>
+
+       <input id="readAll" type="button" value="Read all cookies"/>
+       <br/>
+       Read by Name
+       <input type="text" name="nameToread"/>
+       <input id="readSpec" type="button" value="Read"/>
+    </form>
+</body>
+
+</html>

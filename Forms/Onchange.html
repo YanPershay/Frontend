@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Onchange form event</title>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+            for (var i = 0; i < document.forms[0].elements.length; i++) {
+
+                document.forms[0].elements[i].onchange = function () {
+                    document.getElementById("output").innerHTML = "Value changed in " + this.name;
+                }
+
+                
+                document.forms[0].elements[i].onblur = function () {
+                   this.style.border = "1px dotted green";
+                }
+
+                document.forms[0].elements[i].onfocus = function () {
+                   this.style.border = "1px solid red";
+                }
+
+                var loginHint = "Enter " + document.forms[0].login.name;
+                var passHint = "Enter " + document.forms[0].password.name;
+
+                var loginInput = document.forms[0].login;
+                var passInput = document.forms[0].password;
+
+                initInput();
+
+                loginInput.onfocus = function () {
+                    if(loginInput.value == loginHint){
+                        loginInput.value = "";
+                        loginInput.style.color = "black";
+                        loginInput.style.fontStyle = "normal";
+                    }
+                }
+
+                loginInput.onblur = function () {
+                    if(loginInput.value == ""){
+                        initInput();
+                    }
+                }
+
+                passInput.onfocus = function () {
+                    if(passInput.value == passHint){
+                        passInput.value = "";
+                        passInput.style.color = "black";
+                        passInput.style.fontStyle = "normal";
+                    }
+                }
+
+                passInput.onblur = function () {
+                    if(passInput.value == ""){
+                        initInput();
+                    }
+                }
+
+                function initInput(){
+                    loginInput.value = loginHint;
+                    loginInput.style.color = "gray";
+                    loginInput.style.fontStyle = "italic";
+
+                    passInput.value = passHint;
+                    passInput.style.color = "gray";
+                    passInput.style.fontStyle = "italic";
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <form>
+        Login<input type="text" name="login" value="" /><br />
+        Password <input type="password" name="password" value="" /><br />
+        Third <input type="text" name="third" value="" placeholder="Enter third"/><br />
+    </form>
+    <p id="output"></p>
+</body>
+
+</html>

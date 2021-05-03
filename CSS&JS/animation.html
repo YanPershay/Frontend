@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Epilepsy</title>
+
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+
+            var e = document.getElementById("rect");
+
+            e.style.width = "100px";
+            e.style.height = "100px";
+            e.style.border = "solid black 3px";
+
+            var colors = ["white", "purple", "black", "pink", "red", "green", "blue", "yellow"];
+            var nextColor = 0;
+
+            setInterval(function () {
+                e.style.backgroundColor = colors[nextColor++ % colors.length];
+            }, 500);
+
+            var e2 = document.getElementById("rest");
+
+            e2.style.width = "100px";
+            e2.style.height = "100px";
+            e2.style.border = "solid black 3px";
+
+            var color = 0;
+
+            setInterval(function () {
+                color = color + 1 % 360;
+                e2.style.backgroundColor = "hsl(" + color + ", 100%, 50%)";
+            }, 5);
+
+            var div1 = document.getElementById("div1");
+            var leftPos = 10;
+
+            setInterval(animate, 1);
+
+            function animate() {
+                div1.style.left = leftPos + "px";
+                leftPos++;
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div id="rect">
+
+    </div>
+
+    <div id="rest">
+
+    </div>
+    <br />
+    <div id="div1" style="height: 20px; width: 30px; background-color: rgb(181, 15, 231); position: relative;"></div>
+
+</body>
+
+</html>

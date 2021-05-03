@@ -16,6 +16,17 @@
                 div.style.backgroundColor = "green";
             }
 
+            button.ondblclick = function(){
+                var div = document.getElementsByTagName("div")[0];
+                div.style.backgroundColor = "red";
+            }
+
+            var classButton = document.getElementById("classButton");
+
+            classButton.onclick = function(){
+               document.getElementById("myDiv").className = "class1";
+            }
+
         }
     
     </script>
@@ -24,8 +35,9 @@
 
 <body>
 
-   <div ></div>
+   <div id="myDiv"></div>
    <input type="button" value="Change color"/>
+   <input id="classButton" type="button" value="Change by class"/>
 
 </body>
 

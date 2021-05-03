@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tooltip</title>
+    <link href="tooltip.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript">
+    
+        function Tooltip(){
+            this.tooltip = document.createElement("div");
+            this.tooltip.style.position = "absolute";
+            this.tooltip.style.visibility = "hidden";
+            this.tooltip.className = "tooltip";
+        }
+
+        Tooltip.prototype.show = function(text, x, y){
+            this.tooltip.innerHTML = text;
+            this.tooltip.style.left = x + "px";
+            this.tooltip.style.top = y + "px";
+            this.tooltip.style.visibility = "visible";
+
+            if(this.tooltip.parentNode != document.body){
+                document.body.appendChild(this.tooltip);
+            }
+        }
+
+        Tooltip.prototype.hide = function(){
+            this.tooltip.style.visibility = "hidden";
+        }
+
+        window.onload = function(){
+            var d = document.getElementById("text");
+            d.onmousemove = mouseMoveHandler;
+            d.onmouseout = mouseOutHandler;
+        }
+
+        var t = new Tooltip();
+
+        function mouseMoveHandler(e){
+            if(!e) e = window.event;
+            t.show("Nice text bro.", e.clientX + 10, e.clientY + 10);
+        }
+
+        function mouseOutHandler(){
+            t.hide();
+        }
+
+
+    
+    </script>
+</head>
+
+<body>
+
+    <div id="text">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type
+        specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged. It was popularised in
+        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+        and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+    </div>
+
+</body>
+
+</html>

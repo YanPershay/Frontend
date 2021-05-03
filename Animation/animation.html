@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Anime</title>
+    <script type="text/javascript" src="animation.js"></script>
+    <script type="text/javascript">
+
+      window.onload = function(){
+           
+       var anime = new Animation(
+           "canvas",
+           15,
+           [
+               "assets/1.png",
+               "assets/2.png",
+               "assets/3.png",
+               "assets/4.png",
+               "assets/5.png",
+               "assets/6.png",
+               "assets/7.png",
+               "assets/8.png",
+           ]
+       )
+
+       document.getElementById("start").onclick = function(){
+           anime.start();
+       }
+
+       document.getElementById("end").onclick = function(){
+           anime.stop();
+       }
+      }
+
+    </script>
+</head>
+
+<body>
+    <form>
+       <img id="canvas" src = "assets/1.png"/>
+       <br/>
+       <input id="start" type="button" value="Start"/>
+       <input id="end" type="button" value="End"/>
+
+    </form>
+</body>
+
+</html>

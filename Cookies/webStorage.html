@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Storage example</title>
+
+    <script type="text/javascript">
+
+      window.onload = function(){
+           
+        var output = document.getElementById("output");
+        var btn1 = document.getElementById("writeSession");
+        var btn2 = document.getElementById("readSession");
+
+        btn1.onclick = function(){
+            window.sessionStorage.setItem("key1", "Session value 1");
+            window.sessionStorage.key2 = "Session value2";
+            window.sessionStorage["key3"] = "Session value 3";
+        }
+
+        btn2.onclick = function(){
+            output.innerHTML = window.sessionStorage.getItem("key1");
+            output.innerHTML += "<br/>";
+            output.innerHTML += window.sessionStorage.key2;
+            output.innerHTML += "<br/>";
+            output.innerHTML += window.sessionStorage["key3"];
+        }
+
+        var btn3 = document.getElementById("writeLocal");
+        var btn4 = document.getElementById("readLocal");
+
+        btn3.onclick = function(){
+            window.sessionStorage.setItem("key1", "Local value 1");
+            window.sessionStorage.key2 = "Local value2";
+            window.sessionStorage["key3"] = "Local value 3";
+        }
+
+        btn4.onclick = function(){
+            output.innerHTML = window.sessionStorage.getItem("key1");
+            output.innerHTML += "<br/>";
+            output.innerHTML += window.sessionStorage.key2;
+            output.innerHTML += "<br/>";
+            output.innerHTML += window.sessionStorage["key3"];
+        }
+
+      }
+
+    </script>
+</head>
+
+<body>
+    <form>
+       <p>Session storage</P>
+       <input id="writeSession" type="button" value="Write to session storage"/>
+       <input id="readSession" type="button" value="Read from session storage"/>
+       <br/>
+
+       <p>Local storage</P>
+        <input id="writeLocal" type="button" value="Write to local storage"/>
+        <input id="readLocal" type="button" value="Read from local storage"/>
+        <br/>
+       
+       <div id="output">
+
+       </div>
+
+    </form>
+</body>
+
+</html>

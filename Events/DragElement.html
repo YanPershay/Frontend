@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Drag element</title>
+    <style type="text/css">
+
+        
+
+    </style>
+    <script type="text/javascript">
+
+        window.addEventListener("load", init, false);
+        
+
+        function init(){
+            var elem = document.getElementById("elem");
+
+
+            window.onbeforeunload = function(){
+            return "Are you sure you want to exit?"
+        }
+            elem.addEventListener("mousedown", function(e){
+                drag(this, e);
+            })
+        }
+
+        function drag(elementToDrag, event){
+            var startX = event.clientX,
+            startY = event.clientY;
+
+            var origX = elementToDrag.offsetLeft,
+            origY = elementToDrag.offsetTop;
+
+            var deltaX = startX - origX,
+            deltaY = startY - origY;
+
+            document.addEventListener("mousemove", moveHandler, true);
+            document.addEventListener("mouseup", upHandler, true);
+
+            function moveHandler(e){
+                if(!e) e = window.event;
+
+                elementToDrag.style.left = (e.clientX - deltaX) + "px";
+                elementToDrag.style.top = (e.clientY - deltaY) + "px";
+            }
+
+            function upHandler(e){
+                if(!e) e = window.event;
+
+                document.removeEventListener("mouseup", upHandler, true);
+                document.removeEventListener("mousemove", moveHandler, true);
+            }
+
+        }
+
+    </script>
+</head>
+
+<body>
+    
+    <div id="elem" style="position: absolute; left: 100px; top: 100px; height: 100px; width: 100px; background-color: violet;"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Input filter</title>
+    <style type="text/css">
+
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        label{
+            width: 150px;
+            float:left;
+
+        }
+
+        input + span{
+            visibility: hidden;
+            color: red;
+        }
+
+    </style>
+    <script type="text/javascript">
+
+        window.addEventListener("load", init, false);
+
+        function init(){
+            var inputs = document.getElementsByTagName("input");
+
+            for(var i=0;i<inputs.length;i++){
+                var e = inputs[i];
+
+                if(e.type != "text") continue;
+                if(e.dataset.charsAllowed == undefined) continue;
+
+                e.addEventListener("keypress", keyFilter, false);
+            }
+        }
+
+        function keyFilter(e){
+            if(!e) e = window.event;
+
+            if(e.charCode == 0 || e.charCode < 32) return true;
+
+            var allowedText = e.target.dataset.charsAllowed;
+            var element = e.target.dataset.messageId;
+
+            var symbol = String.fromCharCode(e.charCode).toLowerCase();
+
+            if(allowedText.search(symbol) == -1){
+                if(element){
+                    element = document.getElementById(element);
+                    element.style.visibility = "visible";
+                }
+
+                e.preventDefault();
+                return false;
+            }
+            else{
+                if(element){
+                    element = document.getElementById(element);
+                    element.style.visibility = "hidden";
+                }
+                return true;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <p>
+        <label>Name</label>
+        <input type="text" name="firstName" data-chars-allowed="qwertyuiopasdfghjklzxcvbnm"
+            data-message-id="firstNameError" />
+            <span id="firstNameError">Only letters allowed to use in this text field.</span>
+    </p>
+
+    <p>
+        <label>Post index</label>
+        <input type="text" name="zip" data-chars-allowed="1234567890" data-message-id="zipError"/>
+        <span id="zipError">Only numbers allowed to use in this text field.</span>
+    </p>
+</body>
+
+</html>
